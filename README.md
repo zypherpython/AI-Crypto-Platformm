@@ -1,4 +1,4 @@
-# Crypto Data Platform
+# AI Crypto Data Platform
 
 An end-to-end data engineering pipeline that pulls live cryptocurrency data from a public API, orchestrates the workflow with Apache Airflow, stores it in PostgreSQL, generates analytics, and uses an LLM to produce plain-English market summaries — all visualized in a Streamlit dashboard.
 
