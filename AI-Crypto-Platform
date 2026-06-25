@@ -1,1 +1,26 @@
-To be continued.....
+import requests
+from datetime import datetime
+
+def fetch_raw_data():
+    url = "https://api.coingecko.com/api/v3/simple/price"
+    params = {
+        "ids":"bitcoin,ethereum,solana",
+        "vs_currencies": "usd",
+        "include_market_cap":"True",
+        "include_24hr_vol": "True"
+    }
+    response = requests.get(url,params=params)
+    raw_data = response.json()
+    return raw_data
+def clean_data(raw_data):
+    cleaned = []
+    for coin,value in raw_data.items():
+        cleaned.append({
+            "Symbol":coin,
+            "Price_usd": value["usd"],
+            "Market_Cap": value["usd_market_cap"],
+            "24hr_Volume": value["usd_24h_vol"],
+            "Time": datetime.now()
+        })
+
+    return cleaned
