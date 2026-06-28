@@ -55,3 +55,52 @@ def clean_data(raw_data):
      })
      df = df.reset_index().rename(columns={"index":"Symbol"})
      return df
+def load(df, conn):
+     cursor= conn.cursor()
+
+     create_table_query= """
+     CREATE TABLE IF NOT EXISTS crypto_prices (
+          symbol TEXT,
+          price_usd FLOAT,
+          market_cap FLOAT,
+           
+          24hr_vol FLOAT,
+          volume_ratio FLOAT,
+          price_category TEXT,
+          time TIMESTAMP
+          );
+          """
+     cursor.execute(create_table_query)
+     conn.commit()
+     
+
+     values= list(df[[
+          "symbol",
+          "price_usd",
+          "market_cap",
+          "24h_vol",
+          "volume_ratio",
+          "price_category",
+          "time"
+     ]].itertuples(index=False,name=None))
+
+     insert_query = """
+    INSERT INTO crypto_prices (
+        symbol,
+        price_usd,
+        market_cap,
+        volume_24h,
+        volume_ratio,
+        price_category,
+        time
+    ) VALUES %s
+    """
+     execute_value(cursor,insert_query,values)
+
+
+     conn.commit()
+     cursor.close()
+     print("✅ Data loaded successfully into PostgreSQL!")
+
+
+
