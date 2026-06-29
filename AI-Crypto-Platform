@@ -102,5 +102,6 @@ def load(df, conn):
      cursor.close()
      print("✅ Data loaded successfully into PostgreSQL!")
 
+airflow about to be installed
 
 
