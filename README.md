@@ -1,12 +1,12 @@
 # AI Crypto Data Platform
 
-An end-to-end data engineering pipeline that pulls live cryptocurrency data from a public API, orchestrates the workflow with Apache Airflow, stores it in PostgreSQL, generates analytics, and uses an LLM to produce plain-English market summaries — all visualized in a Streamlit dashboard.
+An end-to-end data engineering pipeline that pulls live cryptocurrency data from a public API, orchestrates the workflow with Apache Airflow, stores it in PostgreSQL, generates analytics, and uses LLM insights to power a live Streamlit dashboard.
 
 ---
 
 ## What this project does
 
-Airflow runs on a schedule, hits a crypto API, cleans the response, and loads it into PostgreSQL. From there, SQL queries compute metrics like daily trends, monthly highs/lows, and price spikes. Those metrics get passed to an LLM which writes a short human-readable summary. A Streamlit app ties it all together.
+Airflow runs on a schedule, hits a crypto API, cleans the response, and loads it into PostgreSQL. From there, SQL queries compute metrics like daily trends, monthly highs/lows, and price spikes. Those metrics are sent to an LLM which generates plain-English summaries. A Streamlit dashboard displays live prices, historical trends, and AI insights.
 
 ---
 
