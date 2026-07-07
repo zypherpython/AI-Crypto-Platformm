@@ -1,1 +1,0 @@
-# Configuration file - To be implemented
