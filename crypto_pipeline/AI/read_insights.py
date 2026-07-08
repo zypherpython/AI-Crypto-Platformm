@@ -19,4 +19,4 @@ def get_latest_insight():
     if row:
         return row[0]
 
-    return "No AI insight available."
+    return "No AI insight available ."
